@@ -2,12 +2,10 @@ function ansver_create(bool, elem, ansverText = {trueText: '', falseText: ''}){
 	switch (bool) {
 		case true:
 			ansver_render(elem, ansverText.trueText);
-			return ansverText.trueText
-			break;
+			return ansverText.trueText;
 		case false :
 			ansver_render(elem, ansverText.falseText);
-			return ansverText.falseText
-			break;
+			return ansverText.falseText;
 	}
 }
 
@@ -41,7 +39,7 @@ function ansver_render(elem, text = ''){
 	
 	document.querySelector('.word_count').onkeyup = function(){
 		word_count(this.value, '.word_count_result');
-	}
+	};
 
 
 // Задача 2
@@ -62,7 +60,7 @@ function ansver_render(elem, text = ''){
 
 	document.querySelector('.mac_address_check').onkeyup = function(){
 		mac_address_check(this.value, '.mac_address_check_result');
-	}
+	};
 
 // Задача 3
 
@@ -81,7 +79,7 @@ function ansver_render(elem, text = ''){
 	}
 	document.querySelector('.date_check').onkeyup = function(){
 		date_check(this.value, '.date_check_result');
-	}
+	};
 
 
 // Задача 4
@@ -102,7 +100,7 @@ function ansver_render(elem, text = ''){
 
 	document.querySelector('.ip_check').onkeyup = function(){
 		ip_check(this.value, '.ip_check_result');
-	}
+	};
 
 // Задача 5
 
@@ -143,7 +141,7 @@ function ansver_render(elem, text = ''){
 
 	document.querySelector('.pass_check').onkeyup = function(){
 		pass_check(this.value, '.pass_check_result');
-	}
+	};
 
 // Задача 6
 
@@ -153,22 +151,24 @@ function ansver_render(elem, text = ''){
 			return false;
 		}
 
-		let reg = /(https?:\/\/)?[A-z0-9_\-]+\.[a-z\.]{1,6}(\/[A-z0-9_\-\.\/]+)?/gm,
+		let reg = /^(https?:\/\/)?([\w\.]+)\.([a-z]{2,6}\.?)(\/[\w\.]*)*\/?/gm,
 			 check = reg.exec(str);
-		
-		if (check[0] != check.input) {
-			check = false;
-		}else {
+
+
+		if (!check || check[0] != check.input){
+		 	check = false;
+		}
+		else {
 			check = true; 
 		}
 
-		let = ansver = ansver_create(check, elem, {
+		let ansver = ansver_create(check, elem, {
 			  		trueText: 'URL адрес правильный',
-				 	falseText: 'URL адрес содержит ошибку',
+				 		falseText: 'URL адрес содержит ошибку',
 			  	});
 			 
 	}
 
 	document.querySelector('.url_check').onkeyup = function(){
 		url_check(this.value, '.url_check_result');
-	}
+	};
